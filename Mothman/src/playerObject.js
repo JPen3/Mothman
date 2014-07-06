@@ -90,11 +90,15 @@ playerObject.update = function()
 		this.vx = 0;
 	}
 
+	//Move the alien and set its screen boundaries
+	//this.x = Math.max(64, Math.min(this.x + this.vx, gameWorld.width - this.width - 64)); 
+	//this.y = Math.max(64, Math.min(this.y + this.vy, gameWorld.height - this.height - 64));
+	
 	//Move the player
 	this.x += this.vx;
 	this.y += this.vy;
 	
-	//Screen wrapping
+	/*//Screen wrapping
 	if(this.x + this.width < 0)
 	{
 		this.x = canvas1.width;
@@ -110,5 +114,5 @@ playerObject.update = function()
 	if(this.y + this.height > canvas1.height)
 	{
 		this.y = canvas1.height - this.height;
-	}
+	}*/
 };

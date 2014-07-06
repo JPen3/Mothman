@@ -1,8 +1,8 @@
 //Create the player sprite and center it
 //var player = Object.create(spriteObject);
 var player = Object.create(playerObject);
-player.x = 243;
-player.y = 168;
+player.x = 0;
+player.y = 0;
 sprites.push(player);
 
 //Load the images
@@ -77,6 +77,7 @@ function buildLevel()
 	spriteCtx.clearRect(0, 0, canvas1.width, canvas1.height);
 		
 	backgroundCtx.drawImage(levels[currLevel].background, 0, 0);
+	//spriteCtx.drawImage(levels[currLevel].background, 0, 0);
 	
 	gameState = PLAYING;
 	
@@ -85,15 +86,80 @@ function buildLevel()
 function playGame()
 {
 	player.update();
+	moveBackground();
 
+	/*//Scroll the camera
+	if(player.x < camera.leftInnerBoundary())
+	{
+		camera.x = Math.floor(player.x - (camera.width / 4));
+	}
+	if(player.y < camera.topInnerBoundary())
+	{
+		camera.y = Math.floor(player.y - (camera.height / 4));
+	}
+	if(player.x + player.width > camera.rightInnerBoundary())
+	{
+		camera.x = Math.floor(player.x + player.width - (camera.width / 4 * 3));
+	}
+	if(player.y + player.height > camera.bottomInnerBoundary())
+	{
+		camera.y = Math.floor(player.y + player.height - (camera.height / 4 * 3));
+	}
+
+	//The camera's gameWorld boundaries
+	if(camera.x < gameWorld.x)
+	{
+		camera.x = gameWorld.x;
+	}
+	if(camera.y < gameWorld.y)
+	{
+		camera.y = gameWorld.y;
+	}
+	if(camera.x + camera.width > gameWorld.x + gameWorld.width)
+	{
+		camera.x = gameWorld.x + gameWorld.width - camera.width;
+	}
+	if(camera.y + camera.height > gameWorld.height)
+	{
+		camera.y = gameWorld.height - camera.height;
+	}*/
+	
 	//Render the sprite
 	render();
+}
+
+var bgDrawX1 = 0;
+var bgDrawX2 = 1280;
+
+function moveBackground()
+{
+	bgDrawX1 -= 5;
+	bgDrawX2 -= 5;
+	if (bgDrawX1 <= -1280)
+	{
+		bgDrawX1 = 1280;
+	}
+	else if (bgDrawX2 <= -1280)
+	{
+		bgDrawX2 = 1280;
+	}
+	drawBg();
+}
+
+function drawBg()
+{
+	backgroundCtx.clearRect(0, 0, canvas0.width, canvas0.height);
+	backgroundCtx.drawImage(bg, 0, 0, 1280, canvas0.height, bgDrawX1, 0, 1280, canvas0.height);
+	backgroundCtx.drawImage(bg, 0, 0, 1280, canvas0.height, bgDrawX2, 0, 1280, canvas0.height);
 }
 
 function render()
 { 
   //Clear the previous animation frame
   spriteCtx.clearRect(0, 0, canvas1.width, canvas1.height);
+  
+  spriteCtx.save();
+  //spriteCtx.translate(-camera.x, -camera.y);
   
   //Loop through all the sprites and use 
   //their properties to display them
@@ -112,4 +178,5 @@ function render()
       ); 
     }
   }
+  spriteCtx.restore();
 }
