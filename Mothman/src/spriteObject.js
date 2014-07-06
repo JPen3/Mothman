@@ -1,6 +1,17 @@
 var spriteObject =
 {
- 	SIZEX: 0,
+	sourceX: 0,
+	sourceY: 0,
+	sourceWidth: 64,
+	sourceHeight: 64,
+	x: 0,
+	y: 0,
+	width: 64,
+	height: 64,
+	vx: 0,
+	vy: 0
+ 	
+	/*SIZEX: 0,
   	SIZEY: 0,
   	ROWS: 0,
   	COLUMNS: 0,
@@ -45,5 +56,5 @@ var spriteObject =
   	getHalfHeight: function()
   	{
     	return this.halfHeight;
-  	}	
+  	}*/	
 };

@@ -90,7 +90,25 @@ playerObject.update = function()
 		this.vx = 0;
 	}
 
-	//Move the player 
+	//Move the player
 	this.x += this.vx;
 	this.y += this.vy;
+	
+	//Screen wrapping
+	if(this.x + this.width < 0)
+	{
+		this.x = canvas1.width;
+	}
+	if(this.y < 0)
+	{
+		this.y = 0;
+	}
+	if(this.x > canvas1.width)
+	{
+		this.x = 0 - this.width;
+	}
+	if(this.y + this.height > canvas1.height)
+	{
+		this.y = canvas1.height - this.height;
+	}
 };
