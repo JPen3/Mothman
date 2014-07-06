@@ -1,9 +1,14 @@
 //Create the player sprite and center it
 //var player = Object.create(spriteObject);
 var player = Object.create(playerObject);
-player.x = 0;
-player.y = 0;
+player.x = canvas1.width/2;
+player.y = canvas1.height/2;
 sprites.push(player);
+
+var enemy = Object.create(enemyObject);
+enemy.x = 0;
+enemy.y = 0;
+sprites.push(enemy);
 
 //Load the images
 var bg = new Image();
@@ -15,6 +20,11 @@ var image = new Image();
 image.addEventListener("load", loadHandler, false);
 image.src = "../images/mothman.png";
 assetsToLoad.push(image);
+
+var owl = new Image();
+owl.addEventListener("load", loadHandler, false);
+owl.src = "../images/owlman.png";
+assetsToLoad.push(owl);
 
 var levels = [
 	{"background":bg}
@@ -168,14 +178,28 @@ function render()
     for(var i = 0; i < sprites.length; i++)
     {
       var sprite = sprites[i];
-      spriteCtx.drawImage
-      (
-        image, 
-        sprite.sourceX, sprite.sourceY, 
-        sprite.sourceWidth, sprite.sourceHeight,
-        Math.floor(sprite.x), Math.floor(sprite.y), 
-        sprite.width, sprite.height
-      ); 
+	  if(sprite.spriteType == 0)
+	  {
+		  spriteCtx.drawImage
+		  (
+			image, 
+			sprite.sourceX, sprite.sourceY, 
+			sprite.sourceWidth, sprite.sourceHeight,
+			Math.floor(sprite.x), Math.floor(sprite.y), 
+			sprite.width, sprite.height
+		  ); 
+	  }
+	    if(sprite.spriteType == 1)
+	  {
+		  spriteCtx.drawImage
+		  (
+			owl, 
+			sprite.sourceX, sprite.sourceY, 
+			sprite.sourceWidth, sprite.sourceHeight,
+			Math.floor(sprite.x), Math.floor(sprite.y), 
+			sprite.width, sprite.height
+		  ); 
+	  }
     }
   }
   spriteCtx.restore();

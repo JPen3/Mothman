@@ -1,5 +1,7 @@
 var playerObject = Object.create(spriteObject);
 
+playerObject.spriteType = 0;
+
 //Arrow key codes
 var UP = 38;
 var DOWN = 40;

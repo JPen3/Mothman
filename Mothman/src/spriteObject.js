@@ -9,7 +9,9 @@ var spriteObject =
 	width: 64,
 	height: 64,
 	vx: 0,
-	vy: 0
+	vy: 0,
+	
+	spriteType: 0
  	
 	/*SIZEX: 0,
   	SIZEY: 0,
