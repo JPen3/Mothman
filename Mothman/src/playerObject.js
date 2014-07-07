@@ -64,22 +64,50 @@ playerObject.update = function()
 	//Up
 	if(moveUp && !moveDown)
 	{
-		this.vy = -5;
+		if(this.y < 0)
+		{
+			this.vy = 0;
+		}
+		else
+		{
+			this.vy = -5;
+		}
 	}
 	//Down
 	if(moveDown && !moveUp)
 	{
-		this.vy = 5;
+		if(this.y > canvas1.height - this.height)
+		{
+			this.vy = 0;
+		}
+		else
+		{
+			this.vy = 5;
+		}
 	}
 	//Left
 	if(moveLeft && !moveRight)
 	{
-		this.vx = -5;
+		if(this.x < 0)
+		{
+			this.vx = 0;
+		}
+		else
+		{
+			this.vx = -5;
+		}
 	}
 	//Right
 	if(moveRight && !moveLeft)
 	{
-		this.vx = 5;
+		if(this.x > canvas1.width - this.width)
+		{
+			this.vx = 0;
+		}
+		else
+		{
+			this.vx = 5;
+		}
 	}
 
 	//Set the player's velocity to zero if none of the keys are being pressed

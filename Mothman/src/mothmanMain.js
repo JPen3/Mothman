@@ -189,7 +189,7 @@ function render()
 			sprite.width, sprite.height
 		  ); 
 	  }
-	    if(sprite.spriteType == 1)
+	  if(sprite.spriteType == 1)
 	  {
 		  spriteCtx.drawImage
 		  (
