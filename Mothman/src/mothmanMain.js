@@ -143,8 +143,8 @@ var bgDrawX2 = 1280;
 
 function moveBackground()
 {
-	bgDrawX1 -= 5;
-	bgDrawX2 -= 5;
+	bgDrawX1 -= 2.5;
+	bgDrawX2 -= 2.5;
 	if (bgDrawX1 <= -1280)
 	{
 		bgDrawX1 = 1280;
