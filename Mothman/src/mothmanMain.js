@@ -163,6 +163,7 @@ function drawBg()
 	backgroundCtx.drawImage(bg, 0, 0, 1280, canvas0.height, bgDrawX2, 0, 1280, canvas0.height);
 }
 
+
 function render()
 { 
   //Clear the previous animation frame
