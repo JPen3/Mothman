@@ -1,5 +1,23 @@
 var playerObject = Object.create(spriteObject);
 
+playerObject.SIZEX = 64;
+playerObject.SIZEY = 64;
+playerObject.ROWS = 1;
+playerObject.COLUMNS = 3;
+
+playerObject.sourceX = 0;
+playerObject.sourceY = 0;
+playerObject.sourceWidth = 64;
+playerObject.sourceHeight = 64;
+playerObject.width = 64;
+playerObject.height = 64;
+
+playerObject.startFrame = 0;
+playerObject.endFrame = 2;
+playerObject.currentFrame = 0;
+
+
+playerObject.forward = true;
 playerObject.spriteType = 0;
 
 //Arrow key codes
@@ -14,6 +32,35 @@ var moveDown = false;
 var moveRight = false;
 var moveLeft = false;
 
+//The player's updateAnimation method
+playerObject.updateAnimation = function()
+{
+    this.sourceX = Math.floor(this.currentFrame % this.COLUMNS) * this.SIZEX;
+    //this.sourceY = Math.floor(this.currentFrame / this.ROWS) * this.SIZEY;
+	  
+	//If the last frame has been reached, set forward to false
+	if(this.currentFrame === this.endFrame)
+    {
+     	this.forward = false;
+	  	this.currentFrame = this.startFrame;
+    }
+    
+    //If the first frame has been reached, set forward to true
+    if(this.currentFrame === this.startFrame)
+    {
+      	this.forward = true;
+    }
+    
+    //Add 1 to currentFrame if forward is true, subtract 1 if it's false
+	if(this.forward)
+	{
+		this.currentFrame++;
+	}
+	else
+	{
+		this.currentFrame--;
+	}
+};
 
 playerObject.keydownHandler = function(event)
 {

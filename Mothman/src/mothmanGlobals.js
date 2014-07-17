@@ -14,6 +14,7 @@ var OVER = 3;
 var LEVEL_COMPLETE = 4;
 var gameState = LOADING;
 
+var levelPlay = false;
 var currLevel = 0;
 
 //An array to store the sprites

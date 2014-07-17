@@ -18,12 +18,12 @@ assetsToLoad.push(bg);
 
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "../images/mothman.png";
+image.src = "../images/mothmanTilesheet.png";
 assetsToLoad.push(image);
 
 var owl = new Image();
 owl.addEventListener("load", loadHandler, false);
-owl.src = "../images/owlman.png";
+owl.src = "../images/owlmanTilesheet.png";
 assetsToLoad.push(owl);
 
 var levels = [
@@ -89,8 +89,36 @@ function buildLevel()
 	backgroundCtx.drawImage(levels[currLevel].background, 0, 0);
 	//spriteCtx.drawImage(levels[currLevel].background, 0, 0);
 	
+	levelPlay = true;
 	gameState = PLAYING;
 	
+	updatePlayerAnimation();
+	updateEnemyAnimation();
+	
+}
+
+function updatePlayerAnimation()
+{ 
+	if(levelPlay === true)
+	{
+  		//Set a timer to call updateAnimation every 40 milliseconds
+  		setTimeout(updatePlayerAnimation, 140);
+  
+  		//Update the player's animation frames
+  		player.updateAnimation();
+	}
+}
+
+function updateEnemyAnimation()
+{ 
+	if(levelPlay === true)
+	{
+  		//Set a timer to call updateAnimation every 40 milliseconds
+  		setTimeout(updateEnemyAnimation, 1000);
+  
+  		//Update the player's animation frames
+  		enemy.updateAnimation();
+	}
 }
 
 function playGame()

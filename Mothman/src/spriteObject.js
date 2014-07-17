@@ -1,5 +1,10 @@
 var spriteObject =
 {
+	SIZEX: 0,
+  	SIZEY: 0,
+  	ROWS: 0,
+  	COLUMNS: 0,
+
 	sourceX: 0,
 	sourceY: 0,
 	sourceWidth: 64,
